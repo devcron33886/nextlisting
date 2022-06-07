@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAmenitiesTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('amenities', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('house_id');
+            $table->foreign('house_id', 'house_fk_6664396')->references('id')->on('houses');
+            $table->string('property_title');
+            $table->boolean('parking')->default(0)->nullable();
+            $table->integer('garage')->nullable();
+            $table->string('building_age')->nullable();
+            $table->boolean('air_condition')->default(0)->nullable();
+            $table->boolean('bedding')->default(0)->nullable();
+            $table->boolean('heating')->default(0)->nullable();
+            $table->boolean('internet')->default(0)->nullable();
+            $table->boolean('microwave')->default(0)->nullable();
+            $table->boolean('smoking_allow')->default(0)->nullable();
+            $table->boolean('terrace')->default(0)->nullable();
+            $table->boolean('balcony')->default(0)->nullable();
+            $table->boolean('wi_fi')->default(0)->nullable();
+            $table->boolean('beach')->default(0)->nullable();
+            $table->string('property_video')->nullable();
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id', 'team_fk_6665168')->references('id')->on('teams');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+}
