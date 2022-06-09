@@ -190,8 +190,8 @@
                             <div class="sides-widget-header">
                                 <div class="agent-photo"><img src="https://via.placeholder.com/400x400" alt=""></div>
                                 <div class="sides-widget-details">
-                                    <h4><a href="#">Shivangi Preet</a></h4>
-                                    <span><i class="lni-phone-handset"></i>(91) 123 456 7895</span>
+                                    <h4><a href="#">{{ $house->team->name }}</a></h4>
+                                    <span><i class="lni-phone-handset"></i>{{ $house->team->name }}</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
