@@ -45,7 +45,7 @@ class AmenityController extends Controller
 
         $houses = House::pluck('property_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $amenity->load('house', 'team');
+        $amenity->load('house');
 
         return view('admin.amenities.edit', compact('amenity', 'houses'));
     }
@@ -61,7 +61,7 @@ class AmenityController extends Controller
     {
         abort_if(Gate::denies('amenity_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $amenity->load('house', 'team');
+        $amenity->load('house');
 
         return view('admin.amenities.show', compact('amenity'));
     }

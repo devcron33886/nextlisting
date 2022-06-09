@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.permission.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.loaction.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.permissions.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.loactions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,24 +17,24 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.permission.fields.id') }}
+                            {{ trans('cruds.loaction.fields.id') }}
                         </th>
                         <td>
-                            {{ $permission->id }}
+                            {{ $loaction->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.permission.fields.title') }}
+                            {{ trans('cruds.loaction.fields.state') }}
                         </th>
                         <td>
-                            {{ $permission->title }}
+                            {{ $loaction->state }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.permissions.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.loactions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

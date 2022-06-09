@@ -22,7 +22,7 @@ class HouseController extends Controller
     {
         abort_if(Gate::denies('house_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $houses = House::with(['location', 'team', 'media'])->get();
+        $houses = House::with(['location', 'created_by', 'media'])->get();
 
         return view('admin.houses.index', compact('houses'));
     }
@@ -55,9 +55,9 @@ class HouseController extends Controller
     {
         abort_if(Gate::denies('house_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locations = Loaction::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $house->load('location', 'team');
+        $house->load('location', 'created_by');
 
         return view('admin.houses.edit', compact('house', 'locations'));
     }
@@ -87,7 +87,7 @@ class HouseController extends Controller
     {
         abort_if(Gate::denies('house_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $house->load('location', 'team');
+        $house->load('location', 'created_by');
 
         return view('admin.houses.show', compact('house'));
     }

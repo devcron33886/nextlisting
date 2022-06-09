@@ -57,6 +57,22 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.mobile') }}
+                        </th>
+                        <td>
+                            {{ $user->mobile }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.address') }}
+                        </th>
+                        <td>
+                            {{ $user->address }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

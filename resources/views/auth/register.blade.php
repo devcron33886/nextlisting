@@ -44,6 +44,14 @@
                         <input type="password" name="password_confirmation" class="form-control" required placeholder="{{ trans('global.login_password_confirmation') }}">
                     </div>
                 </div>
+                <div class="form-group">
+                    <input type="text" name="mobile" class="form-control {{ $errors->has('mobile') ? ' is-invalid' : '' }}" required autofocus placeholder="{{ trans('cruds.user.fields.mobile') }}" value="{{ old('mobile') }}">
+                    @if($errors->has('mobile'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('mobile') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="row">
                     <div class="col-12 text-right">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">

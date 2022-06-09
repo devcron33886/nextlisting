@@ -8,7 +8,7 @@ use App\Http\Requests\MassDestroyCarRequest;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
-use App\Models\Location;
+use App\Models\Loaction;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -22,7 +22,7 @@ class CarController extends Controller
     {
         abort_if(Gate::denies('car_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $cars = Car::with(['location', 'team', 'media'])->get();
+        $cars = Car::with(['location', 'created_by', 'media'])->get();
 
         return view('admin.cars.index', compact('cars'));
     }
@@ -31,7 +31,7 @@ class CarController extends Controller
     {
         abort_if(Gate::denies('car_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locations = Loaction::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.cars.create', compact('locations'));
     }
@@ -55,9 +55,9 @@ class CarController extends Controller
     {
         abort_if(Gate::denies('car_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locations = Loaction::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $car->load('location', 'team');
+        $car->load('location', 'created_by');
 
         return view('admin.cars.edit', compact('car', 'locations'));
     }
@@ -87,7 +87,7 @@ class CarController extends Controller
     {
         abort_if(Gate::denies('car_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $car->load('location', 'team');
+        $car->load('location', 'created_by');
 
         return view('admin.cars.show', compact('car'));
     }

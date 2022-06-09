@@ -18,8 +18,6 @@ class CreateLandOrPlotsTable extends Migration
             $table->string('area');
             $table->longText('description');
             $table->string('approved')->nullable();
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_6665167')->references('id')->on('teams');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyElectronicRequest;
-use App\Http\Requests\StoreElectronicRequest;
-use App\Http\Requests\UpdateElectronicRequest;
+use App\Http\Requests\MassDestroyProductRequest;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('electronic_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $electronics = Product::with(['team', 'media'])->get();
+        $electronics = Product::with(['media'])->get();
 
         return view('admin.electronics.index', compact('electronics'));
     }
@@ -33,7 +33,7 @@ class ProductController extends Controller
         return view('admin.electronics.create');
     }
 
-    public function store(StoreElectronicRequest $request)
+    public function store(StoreProductRequest $request)
     {
         $electronic = Product::create($request->all());
 
@@ -56,12 +56,10 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('electronic_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $electronic->load('team');
-
         return view('admin.electronics.edit', compact('electronic'));
     }
 
-    public function update(UpdateElectronicRequest $request, Product $electronic)
+    public function update(UpdateProductRequest $request, Product $electronic)
     {
         $electronic->update($request->all());
 
@@ -97,8 +95,6 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('electronic_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $electronic->load('team');
-
         return view('admin.electronics.show', compact('electronic'));
     }
 
@@ -111,7 +107,7 @@ class ProductController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyElectronicRequest $request)
+    public function massDestroy(MassDestroyProductRequest $request)
     {
         Product::whereIn('id', request('ids'))->delete();
 

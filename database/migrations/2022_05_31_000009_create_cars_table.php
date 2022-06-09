@@ -21,8 +21,6 @@ class CreateCarsTable extends Migration
             $table->string('status')->nullable();
             $table->boolean('approved')->default(0)->nullable();
             $table->string('address');
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_6665140')->references('id')->on('teams');
             $table->timestamps();
             $table->softDeletes();
         });

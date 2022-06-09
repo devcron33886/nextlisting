@@ -16,15 +16,15 @@ class HomeController
 
     public function listing()
     {
-        $houses=House::with(['media','location','amenity','team'])
+        $houses=House::with(['media','location','amenity','created_by'])
             ->orderBy('created_at','DESC')
           ->paginate(4);
-        $cars=Car::with(['media','location','infos','team'])
+        $cars=Car::with(['media','location','infos','created_by'])
             ->orderBy('created_at','DESC')
           ->paginate(4);
-        $lands=LandOrPlot::with(['team','media'])->orderBy('created_at')
+        $lands=LandOrPlot::with(['created_by','media'])->orderBy('created_at')
             ->paginate('4');
-        $products=Product::with(['team','media'])->orderBy('created_at')
+        $products=Product::with(['created_by','media'])->orderBy('created_at')
             ->paginate('4');
         return view('posts.index',compact('houses','cars','lands','products'));
     }

@@ -45,7 +45,7 @@ class VehicleInfoController extends Controller
 
         $cars = Car::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $vehicleInfo->load('car', 'team');
+        $vehicleInfo->load('car');
 
         return view('admin.vehicleInfos.edit', compact('cars', 'vehicleInfo'));
     }
@@ -61,7 +61,7 @@ class VehicleInfoController extends Controller
     {
         abort_if(Gate::denies('vehicle_info_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $vehicleInfo->load('car', 'team');
+        $vehicleInfo->load('car');
 
         return view('admin.vehicleInfos.show', compact('vehicleInfo'));
     }

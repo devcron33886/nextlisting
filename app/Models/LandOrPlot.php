@@ -59,7 +59,7 @@ class LandOrPlot extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 250, 250);
-        $this->addMediaConversion('preview')->fit('crop', 900, 900);
+        $this->addMediaConversion('preview')->fit('crop', 1400, 700);
     }
 
     public function location() :BelongsTo
@@ -79,9 +79,9 @@ class LandOrPlot extends Model implements HasMedia
         return $files;
     }
 
-    public function team() :BelongsTo
+    public function created_by() :BelongsTo
     {
-        return $this->belongsTo(Team::class, 'team_id');
+        return $this->belongsTo(User::class, 'created_by_id');
     }
 
     protected function serializeDate(DateTimeInterface $date): string

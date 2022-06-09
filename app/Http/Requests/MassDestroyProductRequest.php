@@ -7,7 +7,7 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyElectronicRequest extends FormRequest
+class MassDestroyProductRequest extends FormRequest
 {
     public function authorize()
     {

@@ -6,6 +6,7 @@ use DateTimeInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,6 +41,7 @@ class User extends Authenticatable
         'email',
         'email_verified_at',
         'password',
+        'mobile',
         'remember_token',
         'created_at',
         'updated_at',
@@ -89,10 +91,21 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
-
-    public function team() :BelongsTo
+    public function houses(): HasMany
     {
-        return $this->belongsTo(Team::class, 'team_id');
+        return $this->hasMany(House::class);
+    }
+    public function cars(): HasMany
+    {
+        return $this->hasMany(Car::class);
+    }
+    public function lands(): HasMany
+    {
+        return $this->hasMany(LandOrPlot::class);
+    }
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 
     protected function serializeDate(DateTimeInterface $date) :string

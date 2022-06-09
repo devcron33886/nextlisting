@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StoreElectronicRequest;
-use App\Http\Requests\UpdateElectronicRequest;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Admin\ElectronicResource;
 use App\Models\Product;
 use Gate;
@@ -23,7 +23,7 @@ class ElectronicApiController extends Controller
         return new ElectronicResource(Product::with(['team'])->get());
     }
 
-    public function store(StoreElectronicRequest $request)
+    public function store(StoreProductRequest $request)
     {
         $electronic = Product::create($request->all());
 
@@ -47,7 +47,7 @@ class ElectronicApiController extends Controller
         return new ElectronicResource($electronic->load(['team']));
     }
 
-    public function update(UpdateElectronicRequest $request, Product $electronic)
+    public function update(UpdateProductRequest $request, Product $electronic)
     {
         $electronic->update($request->all());
 

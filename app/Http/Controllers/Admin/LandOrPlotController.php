@@ -8,7 +8,7 @@ use App\Http\Requests\MassDestroyLandOrPlotRequest;
 use App\Http\Requests\StoreLandOrPlotRequest;
 use App\Http\Requests\UpdateLandOrPlotRequest;
 use App\Models\LandOrPlot;
-use App\Models\Location;
+use App\Models\Loaction;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -22,7 +22,7 @@ class LandOrPlotController extends Controller
     {
         abort_if(Gate::denies('land_or_plot_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $landOrPlots = LandOrPlot::with(['location', 'team', 'media'])->get();
+        $landOrPlots = LandOrPlot::with(['location', 'created_by', 'media'])->get();
 
         return view('admin.landOrPlots.index', compact('landOrPlots'));
     }
@@ -31,7 +31,7 @@ class LandOrPlotController extends Controller
     {
         abort_if(Gate::denies('land_or_plot_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locations = Loaction::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.landOrPlots.create', compact('locations'));
     }
@@ -55,9 +55,9 @@ class LandOrPlotController extends Controller
     {
         abort_if(Gate::denies('land_or_plot_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locations = Loaction::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $landOrPlot->load('location', 'team');
+        $landOrPlot->load('location', 'created_by');
 
         return view('admin.landOrPlots.edit', compact('landOrPlot', 'locations'));
     }
@@ -87,7 +87,7 @@ class LandOrPlotController extends Controller
     {
         abort_if(Gate::denies('land_or_plot_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $landOrPlot->load('location', 'team');
+        $landOrPlot->load('location', 'created_by');
 
         return view('admin.landOrPlots.show', compact('landOrPlot'));
     }

@@ -27,8 +27,6 @@ class CreateAmenitiesTable extends Migration
             $table->boolean('wi_fi')->default(0)->nullable();
             $table->boolean('beach')->default(0)->nullable();
             $table->string('property_video')->nullable();
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_6665168')->references('id')->on('teams');
             $table->timestamps();
             $table->softDeletes();
         });

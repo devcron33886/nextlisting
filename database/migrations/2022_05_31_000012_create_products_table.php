@@ -16,8 +16,8 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->string('status');
             $table->string('approved')->nullable();
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_6665169')->references('id')->on('teams');
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->foreign('created_by_id', 'created_by_fk_6762316')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });

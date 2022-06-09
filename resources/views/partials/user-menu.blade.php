@@ -29,7 +29,6 @@
                         <li><a href="{{ route('frontend.land-or-plots.create') }}"><i class="ti-map"></i>Submit New Land/Plot</a>
                         </li>
                         <li><a href="{{ route('frontend.electronics.create') }}"><i class="ti-shopping-cart"></i>Submit Product</a></li>
-                        <li><a href="{{ route('frontend.teams.index') }}"><i class="ti-rocket"></i>My Team</a></li>
                         <li><a href="{{route('frontend.listing')}}"><i class="ti-list"></i>My Listings</a></li>
                         <li><a href="submit-property-dashboard.html"><i class="ti-credit-card"></i>My Plan</a></li>
                         <li><a href="{{ route('frontend.profile.index') }}"><i class="ti-unlock"></i>Change

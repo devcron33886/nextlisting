@@ -22,9 +22,7 @@ class CreateHousesTable extends Migration
             $table->longText('description');
             $table->string('approved')->nullable();
             $table->string('house_address')->nullable();
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id', 'team_fk_6665139')->references('id')->on('teams');
-            $table->timestamps();
+             $table->timestamps();
             $table->softDeletes();
         });
     }

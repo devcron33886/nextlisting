@@ -38,6 +38,12 @@
                             {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.mobile') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.address') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -64,6 +70,12 @@
                                 @foreach($user->roles as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                {{ $user->mobile ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->address ?? '' }}
                             </td>
                             <td>
                                 @can('user_show')

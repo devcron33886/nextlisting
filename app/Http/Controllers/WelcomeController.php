@@ -20,10 +20,10 @@ class WelcomeController extends Controller
         SEOMeta::setCanonical('https://nextdeals.rw');
         TwitterCard::setTitle('Home');
         TwitterCard::setSite('@code_sco');
-        $houses=House::with(['media','team','amenity','location'])->limit(6)->orderBy('created_at')->get();
-        $cars=Car::with(['media','team','infos','location'])->limit(6)->orderBy('created_at')->get();
-        $lands=LandOrPlot::with(['media','team','location'])->limit(6)->orderBy('created_at')->get();
-        $products=Product::with(['media','team'])->limit(6)->orderBy('created_at')->get();
+        $houses=House::with(['media','created_by','amenity','location'])->limit(6)->orderBy('created_at')->get();
+        $cars=Car::with(['media','created_by','infos','location'])->limit(6)->orderBy('created_at')->get();
+        $lands=LandOrPlot::with(['media','created_by','location'])->limit(6)->orderBy('created_at')->get();
+        $products=Product::with(['media','created_by'])->limit(6)->orderBy('created_at')->get();
         return view('welcome',compact('products','houses','cars','lands'));
     }
 
@@ -35,7 +35,7 @@ class WelcomeController extends Controller
         TwitterCard::setTitle('Houses');
         TwitterCard::setSite('@code_sco');
         $locations=Location::all();
-        $houses=House::with(['media','team','amenity','location'])
+        $houses=House::with(['media','created_by','amenity','location'])
             ->paginate(6);
 
         return view('house.index',compact('houses','locations'));
@@ -49,7 +49,7 @@ class WelcomeController extends Controller
         TwitterCard::setTitle('Vehicles');
         TwitterCard::setSite('@code_sco');
         $locations=Location::all();
-        $cars=Car::with(['media','team','infos','location'])->paginate(6);
+        $cars=Car::with(['media','created_by','infos','location'])->paginate(6);
 
         return view('cars.index',compact('cars','locations'));
     }
@@ -62,7 +62,7 @@ class WelcomeController extends Controller
         TwitterCard::setTitle('Lands and Plot');
         TwitterCard::setSite('@code_sco');
         $locations=Location::all();
-        $lands=LandOrPlot::with(['media','team','location'])->paginate(6);
+        $lands=LandOrPlot::with(['media','created_by','location'])->paginate(6);
         return view('landOrPlots.index',compact('lands','locations'));
     }
 
@@ -73,7 +73,7 @@ class WelcomeController extends Controller
         SEOMeta::setCanonical('https://nextdeals.rw/listing/products');
         TwitterCard::setTitle('Product');
         TwitterCard::setSite('@code_sco');
-        $products=Product::with(['media','team'])->paginate(6);
+        $products=Product::with(['media','created_by'])->paginate(6);
         return view('products.index',compact('products'));
 
     }

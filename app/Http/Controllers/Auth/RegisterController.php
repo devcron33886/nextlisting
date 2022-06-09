@@ -59,13 +59,14 @@ class RegisterController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'mobile' => ['required', 'string', 'min:10', 'max:14'],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
@@ -73,17 +74,8 @@ class RegisterController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
-            'team_id'  => request()->input('team', null),
+            'mobile'  => $data['mobile'],
         ]);
-
-        if (!request()->has('team')) {
-            $team = \App\Models\Team::create([
-                'owner_id' => $user->id,
-                'name'     => $data['email'],
-            ]);
-
-            $user->update(['team_id' => $team->id]);
-        }
 
         return $user;
     }

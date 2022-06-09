@@ -51,16 +51,20 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
-                <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id">
-                    @foreach($teams as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('team_id') ? old('team_id') : $user->team->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('team'))
-                    <span class="text-danger">{{ $errors->first('team') }}</span>
+                <label for="mobile">{{ trans('cruds.user.fields.mobile') }}</label>
+                <input class="form-control {{ $errors->has('mobile') ? 'is-invalid' : '' }}" type="text" name="mobile" id="mobile" value="{{ old('mobile', $user->mobile) }}">
+                @if($errors->has('mobile'))
+                    <span class="text-danger">{{ $errors->first('mobile') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.team_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.user.fields.mobile_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="address">{{ trans('cruds.user.fields.address') }}</label>
+                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
+                @if($errors->has('address'))
+                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.address_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

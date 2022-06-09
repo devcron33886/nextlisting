@@ -7,11 +7,11 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreElectronicRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('electronic_create');
+        return Gate::allows('electronic_edit');
     }
 
     public function rules()
