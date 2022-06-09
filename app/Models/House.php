@@ -75,7 +75,7 @@ class House extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 250, 250);
-        $this->addMediaConversion('preview')->fit('crop', 900, 900);
+        $this->addMediaConversion('preview')->fit('crop', 1200, 700);
     }
 
     public function location() :BelongsTo
