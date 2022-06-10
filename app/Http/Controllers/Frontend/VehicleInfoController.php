@@ -26,7 +26,7 @@ class VehicleInfoController extends Controller
     {
         $car->infos->update($request->all());
 
-        return redirect()->route('frontend.cars.index')->withSuccessMessage($car->title.'details are saved successfully!');
+        return redirect()->route('frontend.listing')->withSuccessMessage($car->title.'details are saved successfully!');
     }
 
 
