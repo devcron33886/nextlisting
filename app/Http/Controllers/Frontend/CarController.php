@@ -22,7 +22,7 @@ class CarController extends Controller
     {
         abort_if(Gate::denies('car_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $cars = Car::with(['location', 'team', 'media'])->get();
+        $cars = Car::with(['location', 'created_by', 'media'])->get();
 
         return view('frontend.cars.index', compact('cars'));
     }
