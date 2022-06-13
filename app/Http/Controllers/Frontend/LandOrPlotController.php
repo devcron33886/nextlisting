@@ -49,7 +49,7 @@ class LandOrPlotController extends Controller
 
         $locations = Location::pluck('state', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $landOrPlot->load('location', 'team');
+        $landOrPlot->load('location', 'created_by');
 
         return view('frontend.landOrPlots.edit', compact('landOrPlot', 'locations'));
     }
@@ -79,7 +79,7 @@ class LandOrPlotController extends Controller
     {
         abort_if(Gate::denies('land_or_plot_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $landOrPlot->load('location', 'team');
+        $landOrPlot->load('location', 'created_by');
 
         return view('frontend.landOrPlots.show', compact('landOrPlot'));
     }
