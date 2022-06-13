@@ -190,7 +190,7 @@
                             <div class="sides-widget-header">
                                 <div class="agent-photo"><img src="https://via.placeholder.com/400x400" alt=""></div>
                                 <div class="sides-widget-details">
-                                    <h4><a href="#">{{ $house->team->name }}</a></h4>
+                                    <h4><a href="#">{{ $house->created_by->name }}</a></h4>
                                     <span><i class="lni-phone-handset"></i>{{ $house->created_by->mobile }}</span>
                                 </div>
                                 <div class="clearfix"></div>
