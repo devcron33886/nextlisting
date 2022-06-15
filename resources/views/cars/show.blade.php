@@ -228,7 +228,7 @@
                                         </div>
                                         <div class="sides_list_property_detail">
                                             <h4>
-                                                <a href="{{ route('car',$relatedVehicle->slug) }}">{{ $relatedVehicle->property_title }}</a>
+                                                <a href="{{ route('car',$relatedVehicle->slug) }}">{{ $relatedVehicle->title }}</a>
                                             </h4>
                                             <span><i class="ti-location-pin"></i>{{$relatedVehicle->location->state}}, {{ $relatedVehicle->house_address }}</span>
                                             <div class="lists_property_price">
