@@ -28,7 +28,9 @@
                             <h3 class="prt-price-fix">RWF {{ number_format($land->price) }}</h3>
                             <div class="list-fx-features">
                                 <div class="listing-landd-info-icon">
-                                    <div class="inc-fleat-icon"></div>
+                                    <div class="inc-fleat-icon"><img src="{{ asset('assets/img/move.svg')}}" width="13"
+                                                                     alt=""></div>
+                                    {{ $land->area }} sqft
 
                                 </div>
                             </div>
