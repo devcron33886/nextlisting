@@ -132,7 +132,7 @@
                                             <div class="listing-detail-wrapper">
                                                 <div class="listing-short-detail">
                                                     <h4 class="listing-name"><a
-                                                            href="{{ route('house',$car->slug) }}">{{ $car->title }}</a>
+                                                            href="{{ route('car',$car->slug) }}">{{ $car->title }}</a>
                                                     </h4>
                                                     <div class="fr-can-rating">
 
