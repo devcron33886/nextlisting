@@ -9,10 +9,7 @@
                             style="width:1200 px !important; width: 800px !important; "
                             class="img-fluid mx-auto" alt=""/></a></div>
             @endforeach
-
-
         </div>
-        <a href="JavaScript:Void(0);" class="btn-view-pic">View photos</a>
     </div>
     <!-- ============================ Hero Banner End ================================== -->
 
