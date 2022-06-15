@@ -53,7 +53,6 @@ class Car extends Model implements HasMedia
         'status',
         'approved',
         'location_id',
-        'team_id',
         'address',
         'created_at',
         'updated_at',
