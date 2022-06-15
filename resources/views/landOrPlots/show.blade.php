@@ -30,7 +30,7 @@
                                 <div class="listing-landd-info-icon">
                                     <div class="inc-fleat-icon"><img src="{{ asset('assets/img/move.svg')}}" width="13"
                                                                      alt=""></div>
-                                    {{ $land->area }} sqft
+                                    {{ $land->area }}
 
                                 </div>
                             </div>
