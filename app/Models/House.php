@@ -128,5 +128,9 @@ class House extends Model implements HasMedia
             ]
         ];
     }
+    public function scopeMightAlsoLike($query)
+    {
+        return $query->inRandomOrder()->take(6);
+    }
 
 }

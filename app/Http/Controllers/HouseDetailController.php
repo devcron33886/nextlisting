@@ -15,6 +15,7 @@ class HouseDetailController extends Controller
         SEOMeta::addMeta('article:published_time', $house->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $house->address, 'property');
         SEOMeta::addKeyword(['house', 'for', 'rent','sale']);
-        return view('house.show',compact('house'));
+        $relatedHouses=House::with(['media','location','created_by'])->mightAlsoLike()->get();
+        return view('house.show',compact('house','relatedHouses'));
     }
 }

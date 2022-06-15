@@ -49,7 +49,7 @@ class ProductController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $electronic->id]);
         }
 
-        return redirect()->route('frontend.electronics.index');
+        return redirect()->route('frontend.listing')->withSuccessMessage($electronic.' have submitted successfully!');
     }
 
     public function edit(Product $electronic)
@@ -90,7 +90,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('frontend.electronics.index');
+        return redirect()->route('frontend.listing')->withSuccessMessage($electronic.' have updated successfully!');
     }
 
     public function show(Product $electronic)

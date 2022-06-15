@@ -26,7 +26,11 @@
 
                     <div class="property_block_wrap style-2 p-4">
                         <div class="prt-detail-title-desc">
-                            <span class="prt-types sale">For Sale</span>
+                            @if($house->status==1)
+                                <span class="prt-types rent"><strong>For Rent</strong></span>
+                            @elseif($house->status==2)
+                                <span class="prt-types sale"><strong>For Sale</strong></span>
+                            @endif
                             <h3>{{ $house->property_title }}</h3>
                             <span><i class="lni-map-marker"></i> {{$house->location->state}}, {{ $house->house_address }}</span>
                             <h3 class="prt-price-fix">RWF {{ number_format($house->price) }}</h3>
@@ -207,81 +211,32 @@
                             <div class="sidebar_featured_property">
 
                                 <!-- List Sibar Property -->
-                                <div class="sides_list_property">
-                                    <div class="sides_list_property_thumb">
-                                        <img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="sides_list_property_detail">
-                                        <h4><a href="single-property-1.html">Loss vengel New Apartment</a></h4>
-                                        <span><i class="ti-location-pin"></i>Sans Fransico</span>
-                                        <div class="lists_property_price">
-                                            <div class="lists_property_types">
-                                                <div class="property_types_vlix sale">For Sale</div>
-                                            </div>
-                                            <div class="lists_property_price_value">
-                                                <h4>$4,240</h4>
+                                @foreach($relatedHouses as $relatedHouse)
+                                    <div class="sides_list_property">
+                                        <div class="sides_list_property_thumb">
+                                            @foreach($relatedHouse->house_image as $key=>$media)
+                                                <img src="{{ $media->getUrl('preview') }}" class="img-fluid" alt="{{ $relatedHouse->property_title }}">
+                                            @endforeach
+                                        </div>
+                                        <div class="sides_list_property_detail">
+                                            <h4><a href="{{ route('house',$relatedHouse->slug) }}">{{ $relatedHouse->property_title }}</a></h4>
+                                            <span><i class="ti-location-pin"></i>{{$relatedHouse->location->state}}, {{ $relatedHouse->house_address }}</span>
+                                            <div class="lists_property_price">
+                                                <div class="lists_property_types">
+                                                    @if($house->status==1)
+                                                        <div class="property_types_vlix rent">For Rent</div>
+                                                    @elseif($house->status==2)
+                                                        <div class="property_types_vlix sale">For Sale</div>
+                                                    @endif
+
+                                                </div>
+                                                <div class="lists_property_price_value">
+                                                    <h4>RWF {{ number_format($relatedHouse->price) }}</h4>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- List Sibar Property -->
-                                <div class="sides_list_property">
-                                    <div class="sides_list_property_thumb">
-                                        <img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="sides_list_property_detail">
-                                        <h4><a href="single-property-1.html">Montreal Quriqe Apartment</a></h4>
-                                        <span><i class="ti-location-pin"></i>Liverpool, London</span>
-                                        <div class="lists_property_price">
-                                            <div class="lists_property_types">
-                                                <div class="property_types_vlix">For Rent</div>
-                                            </div>
-                                            <div class="lists_property_price_value">
-                                                <h4>$7,380</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- List Sibar Property -->
-                                <div class="sides_list_property">
-                                    <div class="sides_list_property_thumb">
-                                        <img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="sides_list_property_detail">
-                                        <h4><a href="single-property-1.html">Curmic Studio For Office</a></h4>
-                                        <span><i class="ti-location-pin"></i>Montreal, Canada</span>
-                                        <div class="lists_property_price">
-                                            <div class="lists_property_types">
-                                                <div class="property_types_vlix buy">For Buy</div>
-                                            </div>
-                                            <div class="lists_property_price_value">
-                                                <h4>$8,730</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- List Sibar Property -->
-                                <div class="sides_list_property">
-                                    <div class="sides_list_property_thumb">
-                                        <img src="https://via.placeholder.com/1200x800" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="sides_list_property_detail">
-                                        <h4><a href="single-property-1.html">Montreal Quebec City</a></h4>
-                                        <span><i class="ti-location-pin"></i>Sreek View, New York</span>
-                                        <div class="lists_property_price">
-                                            <div class="lists_property_types">
-                                                <div class="property_types_vlix">For Rent</div>
-                                            </div>
-                                            <div class="lists_property_price_value">
-                                                <h4>$6,240</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
 
                         </div>
