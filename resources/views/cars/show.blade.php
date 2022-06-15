@@ -213,7 +213,7 @@
                         <!-- Featured Property -->
                         <div class="sidebar-widgets">
 
-                            <h4>Featured Property</h4>
+                            <h4>Featured Vehicles</h4>
 
                             <div class="sidebar_featured_property">
 
